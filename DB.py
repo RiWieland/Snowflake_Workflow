@@ -14,3 +14,7 @@ def db_cursor():
     )
     cs = ctx.cursor()
     return ctx, cs
+
+
+def db_close(cursor):
+    cursor.close()
