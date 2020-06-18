@@ -18,3 +18,23 @@ def db_cursor():
 
 def db_close(cursor):
     cursor.close()
+
+def validate_con():
+    # Gets the version
+    ctx = snowflake.connector.connect(
+        # host='https://solita.eu-central-1.snowflakecomputing.com/console',
+        account='xxx',
+        user='xxx',
+        password='xxx',
+        database='xxx',
+        warehouse='xxx'
+    )
+    cs = ctx.cursor()
+
+    try:
+        cs.execute("SELECT current_version()")
+        one_row = cs.fetchone()
+        print(one_row[0])
+    finally:
+        cs.close()
+    ctx.close()
