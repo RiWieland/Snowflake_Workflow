@@ -17,3 +17,19 @@ def create_table(name, cursor, path = None, type_='json'):
 
     table_result = cursor.execute(table_sql)
     print(table_result.fetchall())
+
+def create_landing_table(df, table_name, cursor, data_type='VARCHAR(100)'):
+    '''
+    - for csv or json
+    - loads data into a table named as data frame
+    '''
+
+    sql_statement = 'CREATE OR REPLACE TABLE ' + str(table_name) + ' ( '
+    for _, name in enumerate(df.columns):
+        sql_statement += str(name) + ' ' + data_type + ','
+
+    sql_statement = sql_statement[:-1] + ')'
+
+    print(sql_statement)
+    result = cursor.execute(sql_statement)
+    print(result.fetchall())
