@@ -49,3 +49,9 @@ def create_format(name, cursor, type_='JSON'):
 
     format_result = cursor.execute(format_sql)
     print(format_result.fetchall())
+
+def stage_file(stage, cursor, path):
+    path_name = path
+    load_sql = 'put file://{} @{} auto_compress=true;'.format(str(path_name), str(stage))
+    load_result = cursor.execute(load_sql)
+    print(load_result.fetchone())
