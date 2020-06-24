@@ -33,3 +33,14 @@ def create_landing_table(df, table_name, cursor, data_type='VARCHAR(100)'):
     print(sql_statement)
     result = cursor.execute(sql_statement)
     print(result.fetchall())
+
+
+def create_format(name, cursor, type_='JSON'):
+    # Create Stage:
+    if type_=='JSON':
+        format_sql = "create file format IF NOT EXISTS {} type = {} strip_outer_array = true;".format(str(name), str(type_))
+    if type_=='CSV':
+        format_sql = "create file format IF NOT EXISTS {} type = {} ;".format(str(name), str(type_))
+
+    format_result = cursor.execute(format_sql)
+    print(format_result.fetchall())
