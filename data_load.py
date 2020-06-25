@@ -60,3 +60,17 @@ def list_stage(stage,cursor):
     list_sql = "list @{}".format(str(stage))
     list_result = cursor.execute(list_sql)
     print(list_result.fetchall())
+
+
+def copy_files(table, cusor, stage, format_, files=None):
+    # Loop not used at moment
+    #files_list = list(files)
+    #for _, i in enumerate(files):
+    #    new_name = stage + '/' + str(i) + '.gz'
+    #    files_list.append(new_name)
+
+    #copy_sql = "copy into {} from @{} FILES ={} file_format = (format_name = {});".format(str(table), str(stage), files_list, str(format))
+    copy_sql = "copy into {} from @{} file_format = (format_name = {});".format(str(table), str(stage), str(format_))
+    print(copy_sql)
+    result = cusor.execute(copy_sql)
+    print(result.fetchall())
