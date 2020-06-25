@@ -55,3 +55,8 @@ def stage_file(stage, cursor, path):
     load_sql = 'put file://{} @{} auto_compress=true;'.format(str(path_name), str(stage))
     load_result = cursor.execute(load_sql)
     print(load_result.fetchone())
+
+def list_stage(stage,cursor):
+    list_sql = "list @{}".format(str(stage))
+    list_result = cursor.execute(list_sql)
+    print(list_result.fetchall())
