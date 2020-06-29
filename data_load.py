@@ -74,3 +74,8 @@ def copy_files(table, cusor, stage, format_, files=None):
     print(copy_sql)
     result = cusor.execute(copy_sql)
     print(result.fetchall())
+
+def remove_stage(stage, cursor):
+    remove_sql = "remove @{};".format(str(stage))
+    result = cursor.execute(remove_sql)
+    print(result.fetchall())
