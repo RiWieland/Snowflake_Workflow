@@ -79,3 +79,8 @@ def remove_stage(stage, cursor):
     remove_sql = "remove @{};".format(str(stage))
     result = cursor.execute(remove_sql)
     print(result.fetchall())
+
+def check_table(table):
+    select_sql = 'select * from {};'.format(str(table))
+    check_results = cs.execute(select_sql)
+    print(check_results.fetchall())
