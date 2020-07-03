@@ -84,3 +84,12 @@ def check_table(table):
     select_sql = 'select * from {};'.format(str(table))
     check_results = cs.execute(select_sql)
     print(check_results.fetchall())
+
+def extract_data(source, city, year_, target=None):
+    trips = pd.read_csv(source, sep=';', error_bad_lines=False)
+    trips['YEAR'] = pd.DatetimeIndex(trips['DATE_BOOKING']).year
+
+    if target is not None:
+        trips.loc[trips['CITY_RENTAL_ZONE'] == city].to_csv(target)
+
+    return trips.loc[(trips['CITY_RENTAL_ZONE'] == city) & (trips['YEAR'] == year_)].reset_index(drop=True)
