@@ -93,3 +93,27 @@ def extract_data(source, city, year_, target=None):
         trips.loc[trips['CITY_RENTAL_ZONE'] == city].to_csv(target)
 
     return trips.loc[(trips['CITY_RENTAL_ZONE'] == city) & (trips['YEAR'] == year_)].reset_index(drop=True)
+
+def query_sf(cursor, TABLE, YEAR=None):
+    '''
+    # Condition as List to be implemented
+    # Export table as pandas DF
+    '''
+
+    if YEAR:
+        YEAR = str(YEAR)
+        results = cursor.execute('select * from {} where 1=1 and YEAR =  (%s);'.format(TABLE),(YEAR)).fetchall()
+    else:
+        results = cursor.execute('select * from {} where 1=1;'.format(TABLE)).fetchall()
+
+    df = pd.DataFrame(results)
+
+    # get columns
+    meta = cursor.execute('show columns in {}'.format(TABLE)).fetchall()
+
+    col = []
+    for i in range(0,len(meta)):
+        col.append(meta[i][2])
+
+    df.columns = col
+    return df
