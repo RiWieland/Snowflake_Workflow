@@ -5,7 +5,7 @@ def db_cursor():
 
     # Create Cursor:
     ctx = sf.connect(
-        #host='https://solita.eu-central-1.snowflakecomputing.com/console',
+        #host='xxx',
         account='xxx',
         user='xxx',
         password='xxx',
