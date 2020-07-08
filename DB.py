@@ -22,7 +22,7 @@ def db_close(cursor):
 def validate_con():
     # Gets the version
     ctx = snowflake.connector.connect(
-        # host='https://solita.eu-central-1.snowflakecomputing.com/console',
+        # host='xxx',
         account='xxx',
         user='xxx',
         password='xxx',
