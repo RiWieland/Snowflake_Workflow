@@ -14,6 +14,10 @@ stage_name = 'xxx'
 file_list = [file for file in os.listdir(path_) if '.json' in str(file)]
 file_list.sort()
 
+print(file_list)
+
+cs = db_cursor()
+
 
 create_table(table_name)
 create_format(format_name)
