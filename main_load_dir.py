@@ -22,3 +22,12 @@ cs = db_cursor()
 create_table(table_name)
 create_format(format_name)
 create_stage(stage_name, format_name)
+
+for _, file_name in enumerate(file_list):
+
+    # pickle to json:
+    file_path = path_ + file_name
+    # load from local to table
+    stage_file(stage_name, file_path)
+    list_stage(stage_name)
+    check_table(table_name)
