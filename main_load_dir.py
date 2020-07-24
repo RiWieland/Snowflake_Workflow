@@ -31,3 +31,8 @@ for _, file_name in enumerate(file_list):
     stage_file(stage_name, file_path)
     list_stage(stage_name)
     check_table(table_name)
+
+copy_files(table_name, stage_name, format_name, file_list)
+remove_stage(stage_name)
+
+db_close(cs)
