@@ -5,12 +5,7 @@ def db_cursor():
 
     # Create Cursor:
     ctx = sf.connect(
-        #host='xxx',
-        account='xxx',
-        user='xxx',
-        password='xxx',
-        database='xxx',
-        schema='xxx'
+        xxx
     )
     cs = ctx.cursor()
     return ctx, cs
@@ -22,13 +17,7 @@ def db_close(cursor):
 def validate_con():
     # Gets the version
     ctx = snowflake.connector.connect(
-        # host='xxx',
-        account='xxx',
-        user='xxx',
-        password='xxx',
-        database='xxx',
-        warehouse='xxx'
-    )
+        xxx    )
     cs = ctx.cursor()
 
     try:
